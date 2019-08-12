@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type='project'>
+        <name>Netdata Builder</name>
+        <email>bot@netdata.cloud</email>
+    </maintainer>
+    <use>
+        <flag name="compression">Enable compression via zlib</flag>
+        <flag name="ipmi">Install <pkg>sys-apps/ipmitool</pkg> required for monitoring IPMI sensors.</flag>
+        <flag name="nfacct">Enable the nfacct plugin</flag>
+        <flag name="nodejs">Enable use of nodejs (which some plugins use)</flag>
+        <flag name="tor">Enable monitoring of tor</flag>
+        <flag name="xen">Enable monitoring of xen</flag>
+    </use>
+    <upstream>
+        <remote-id type="github">netdata/netdata</remote-id>
+    </upstream>
+    <longdescription lang="en">
+        Netdata is the fastest way to visualize metrics. It is a
+        resource efficient, highly optimized system for collecting and
+        visualizing any type of realtime timeseries data, from CPU usage,
+        disk activity, SQL queries, API calls, web site visitors, etc.
+
+        Netdata tries to visualize the truth of now, in its greatest
+        detail, so that you can get insights of what is happening now
+        and what just happened, on your systems and applications.
+    </longdescription>
+</pkgmetadata>
