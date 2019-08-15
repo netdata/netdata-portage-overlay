@@ -65,6 +65,8 @@ RDEPEND="
 		dev-libs/yajl
 	)"
 DEPEND="${RDEPEND}
+	acct-user/netdata
+	acct-group/netdata
 	virtual/pkgconfig"
 
 : ${NETDATA_USER:=netdata}
@@ -76,9 +78,6 @@ FILECAPS=(
 
 pkg_setup() {
 	linux-info_pkg_setup
-
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 / ${PN}
 }
 
 src_prepare() {
