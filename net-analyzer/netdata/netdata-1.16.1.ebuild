@@ -93,6 +93,8 @@ src_prepare() {
 }
 
 src_configure() {
+	eautoreconf
+
 	econf \
 		--localstatedir="${EPREFIX}"/var \
 		--with-user=${NETDATA_USER} \
