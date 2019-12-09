@@ -109,7 +109,10 @@ REQUIRED_USE="
 	postgres? ( netdata_collectors_postgres )
 	tor? ( netdata_collectors_tor )
 	xen? ( netdata_collectors_xen )
-	netdata_collectors_adaptec_raid? ( python )
+	netdata_collectors_adaptec_raid? (
+		python
+		sudo
+	)
 	netdata_collectors_am2320? ( python )
 	netdata_collectors_apache? ( python )
 	netdata_collectors_beanstalk? ( python )
@@ -132,14 +135,20 @@ REQUIRED_USE="
 	netdata_collectors_go_expvar? ( python )
 	netdata_collectors_haproxy? ( python )
 	netdata_collectors_hddtemp? ( python )
-	netdata_collectors_hpssa? ( python )
+	netdata_collectors_hpssa? (
+		python
+		sudo
+	)
 	netdata_collectors_httpcheck? ( python )
 	netdata_collectors_icecast? ( python )
 	netdata_collectors_ipfs? ( python )
 	netdata_collectors_isc_dhcpd? ( python )
 	netdata_collectors_litespeed? ( python )
 	netdata_collectors_logind? ( python )
-	netdata_collectors_megacli? ( python )
+	netdata_collectors_megacli? (
+		python
+		sudo
+	)
 	netdata_collectors_memcached? ( python )
 	netdata_collectors_mongodb? ( python )
 	netdata_collectors_monit? ( python )
@@ -164,7 +173,10 @@ REQUIRED_USE="
 	netdata_collectors_rethinkdbs? ( python )
 	netdata_collectors_retroshare? ( python )
 	netdata_collectors_riakkv? ( python )
-	netdata_collectors_samba? ( python )
+	netdata_collectors_samba? (
+		python
+		sudo
+	)
 	netdata_collectors_sensors? ( python )
 	netdata_collectors_smartd_log? ( python )
 	netdata_collectors_spigotmc? ( python )
@@ -214,12 +226,20 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		dev-python/pyyaml[${PYTHON_USEDEP}]
+		netdata_collectors_adaptec_raid? ( sys-block/arcconf )
+		netdata_collectors_beanstalk? ( dev-python/beanstalkc[${PYTHON_USEDEP}] )
+		netdata_collectors_dns_query_time? ( dev-python/dnspython[${PYTHON_USEDEP}] )
+		netdata_collectors_hpssa? ( sys-block/hpssacli )
+		netdata_collectors_isc_dhcpd? ( virtual/python-ipaddress[${PYTHON_USEDEP}] )
+		netdata_collectors_megacli? ( sys-block/megacli )
+		netdata_collectors_mongodb? ( dev-python/pymongo[${PYTHON_USEDEP}] )
 		netdata_collectors_mysql? (
 			|| (
 				dev-python/mysqlclient[${PYTHON_USEDEP}]
 				dev-python/mysql-python[${PYTHON_USEDEP}]
 			)
 		)
+		netdata_collectors_openldap? ( dev-python/python-ldap[${PYTHON_USEDEP}] )
 		netdata_collectors_postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
 		netdata_collectors_tor? ( net-libs/stem[${PYTHON_USEDEP}] )
 	)
