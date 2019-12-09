@@ -42,6 +42,7 @@ COLLECTORS="
 	exim
 	fail2ban
 	freeradius
+	fronius
 	gearman
 	go_expvar
 	haproxy
@@ -59,6 +60,7 @@ COLLECTORS="
 	mongodb
 	monit
 	mysql
+	named
 	nfacct
 	nginx
 	nginx_plus
@@ -83,9 +85,12 @@ COLLECTORS="
 	samba
 	sensors
 	smartd_log
+	sma_webbox
+	snmp
 	spigotmc
 	springboot
 	squid
+	stiebeleltron
 	tomcat
 	tor
 	traefik
@@ -131,6 +136,7 @@ REQUIRED_USE="
 	netdata_collectors_exim? ( python )
 	netdata_collectors_fail2ban? ( python )
 	netdata_collectors_freeradius? ( python )
+	netdata_collectors_fronius? ( nodejs )
 	netdata_collectors_gearman? ( python )
 	netdata_collectors_go_expvar? ( python )
 	netdata_collectors_haproxy? ( python )
@@ -153,6 +159,7 @@ REQUIRED_USE="
 	netdata_collectors_mongodb? ( python )
 	netdata_collectors_monit? ( python )
 	netdata_collectors_mysql? ( python )
+	netdata_collectors_named? ( nodejs )
 	netdata_collectors_nginx? ( python )
 	netdata_collectors_nginx_plus? ( python )
 	netdata_collectors_nsd? ( python )
@@ -178,10 +185,13 @@ REQUIRED_USE="
 		sudo
 	)
 	netdata_collectors_sensors? ( python )
+	netdata_collectors_sma_webbox? ( nodejs )
 	netdata_collectors_smartd_log? ( python )
+	netdata_collectors_snmp? ( nodejs )
 	netdata_collectors_spigotmc? ( python )
 	netdata_collectors_springboot? ( python )
 	netdata_collectors_squid? ( python )
+	netdata_collectors_stiebeleltron? ( nodejs )
 	netdata_collectors_tomcat? ( python )
 	netdata_collectors_tor? ( python )
 	netdata_collectors_traefik? ( python )
