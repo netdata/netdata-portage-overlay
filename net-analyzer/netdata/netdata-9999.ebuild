@@ -183,6 +183,8 @@ REQUIRED_USE="
 
 # most unconditional dependencies are for plugins.d/charts.d.plugin:
 RDEPEND="
+	acct-user/netdata
+	acct-group/netdata
 	app-misc/jq
 	dev-libs/libuv
 	>=app-shells/bash-4:0
@@ -232,8 +234,6 @@ RDEPEND="
 		dev-libs/yajl
 	)"
 DEPEND="${RDEPEND}
-	acct-user/netdata
-	acct-group/netdata
 	virtual/pkgconfig"
 
 : ${NETDATA_USER:=netdata}
