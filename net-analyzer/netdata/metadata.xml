@@ -8,11 +8,11 @@
     <use>
         <flag name="compression">Enable compression via zlib</flag>
         <flag name="dbengine">Enable the new dbengine memory mode</flag>
-        <flag name="ipmi">Install <pkg>sys-apps/ipmitool</pkg> required for monitoring IPMI sensors.</flag>
-        <flag name="nfacct">Enable the nfacct plugin</flag>
+        <flag name="ipmi">Install <pkg>sys-apps/ipmitool</pkg> required for monitoring IPMI sensors (DEPRECATED, add ipmi to the NETDATA_COLLECTORS variable instead)</flag>
+        <flag name="nfacct">Enable the nfacct plugin (DEPRECATED, add nfacct to the NETDATA_COLLECTORS variable instead)</flag>
         <flag name="nodejs">Enable use of nodejs (which some plugins use)</flag>
-        <flag name="tor">Enable monitoring of tor</flag>
-        <flag name="xen">Enable monitoring of xen</flag>
+        <flag name="tor">Enable monitoring of Tor (DEPRECATED, add tor to the NETDATA_COLLECTORS variable instead)</flag>
+        <flag name="xen">Enable monitoring of Xen (DEPRECATED, add xen to the NETDATA_COLLECTORS variable instead)</flag>
     </use>
     <upstream>
         <remote-id type="github">netdata/netdata</remote-id>
