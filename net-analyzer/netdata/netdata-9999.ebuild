@@ -19,11 +19,12 @@ HOMEPAGE="https://github.com/netdata/netdata https://my-netdata.io/"
 
 LICENSE="GPL-3+ MIT BSD"
 SLOT="0"
-IUSE="caps +compression cpu_flags_x86_sse2 cups dbengine ipmi mysql nfacct nodejs postgres +python tor xen"
+IUSE="caps +compression cpu_flags_x86_sse2 cups dbengine ipmi mysql nfacct nodejs postgres +python ssl tor xen"
 REQUIRED_USE="
 	mysql? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )
-	tor? ( python )"
+	tor? ( python )
+	dbengine? ( ssl )"
 
 # most unconditional dependencies are for plugins.d/charts.d.plugin:
 RDEPEND="
@@ -45,7 +46,6 @@ RDEPEND="
 	dbengine? (
 		app-arch/lz4
 		dev-libs/judy
-		dev-libs/openssl:=
 	)
 	compression? ( sys-libs/zlib )
 	ipmi? ( sys-libs/freeipmi )
@@ -65,6 +65,9 @@ RDEPEND="
 		)
 		postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
 		tor? ( net-libs/stem[${PYTHON_USEDEP}] )
+	)
+	ssl? (
+		dev-libs/openssl:=
 	)
 	xen? (
 		app-emulation/xen-tools
@@ -100,6 +103,7 @@ src_configure() {
 		$(use_enable dbengine) \
 		$(use_enable nfacct plugin-nfacct) \
 		$(use_enable ipmi plugin-freeipmi) \
+		$(use_enable ssl https) \
 		$(use_enable xen plugin-xenstat) \
 		$(use_enable cpu_flags_x86_sse2 x86-sse) \
 		$(use_with compression zlib)
