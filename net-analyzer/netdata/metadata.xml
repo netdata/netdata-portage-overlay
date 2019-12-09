@@ -11,6 +11,7 @@
         <flag name="ipmi">Install <pkg>sys-apps/ipmitool</pkg> required for monitoring IPMI sensors (DEPRECATED, add ipmi to the NETDATA_COLLECTORS variable instead)</flag>
         <flag name="nfacct">Enable the nfacct plugin (DEPRECATED, add nfacct to the NETDATA_COLLECTORS variable instead)</flag>
         <flag name="nodejs">Enable use of nodejs (which some plugins use)</flag>
+        <flag name="sudo">Enable use of <pkg>app-admin/sudo</pkg> for collectors which require elevated priveleges</flag>
         <flag name="tor">Enable monitoring of Tor (DEPRECATED, add tor to the NETDATA_COLLECTORS variable instead)</flag>
         <flag name="xen">Enable monitoring of Xen (DEPRECATED, add xen to the NETDATA_COLLECTORS variable instead)</flag>
     </use>

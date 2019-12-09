@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/netdata/netdata https://my-netdata.io/"
 LICENSE="GPL-3+ MIT BSD"
 SLOT="0"
 
-IUSE="caps +compression cpu_flags_x86_sse2 cups dbengine ipmi mysql nfacct nodejs postgres +python ssl tor xen"
+IUSE="caps +compression cpu_flags_x86_sse2 cups dbengine ipmi mysql nfacct nodejs postgres +python ssl sudo tor xen"
 
 COLLECTORS="
 	adaptec_raid
@@ -223,6 +223,9 @@ RDEPEND="
 	)
 	ssl? (
 		dev-libs/openssl:=
+	)
+	sudo? (
+		app-admin/sudo
 	)
 	netdata_collectors_xen? (
 		app-emulation/xen-tools
