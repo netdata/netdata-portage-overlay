@@ -28,6 +28,7 @@ REQUIRED_USE="
 # most unconditional dependencies are for plugins.d/charts.d.plugin:
 RDEPEND="
 	app-misc/jq
+	dev-libs/libuv
 	>=app-shells/bash-4:0
 	|| (
 		net-analyzer/openbsd-netcat
@@ -42,7 +43,6 @@ RDEPEND="
 	caps? ( sys-libs/libcap )
 	cups? ( net-print/cups )
 	dbengine? (
-		dev-libs/libuv
 		app-arch/lz4
 		dev-libs/judy
 		dev-libs/openssl:=
