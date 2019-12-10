@@ -103,103 +103,103 @@ COLLECTORS="
 "
 
 for collector in ${COLLECTORS} ; do
-	IUSE="${IUSE} netdata_collectors_${collector}"
+	IUSE="${IUSE} collectors-${collector}"
 done
 
 REQUIRED_USE="
-	cups? ( netdata_collectors_cups )
-	ipmi? ( netdata_collectors_ipmi )
-	mysql? ( netdata_collectors_mysql )
-	nfacct? ( netdata_collectors_nfacct )
-	postgres? ( netdata_collectors_postgres )
-	tor? ( netdata_collectors_tor )
-	xen? ( netdata_collectors_xen )
-	netdata_collectors_adaptec_raid? (
+	cups? ( collectors-cups )
+	ipmi? ( collectors-ipmi )
+	mysql? ( collectors-mysql )
+	nfacct? ( collectors-nfacct )
+	postgres? ( collectors-postgres )
+	tor? ( collectors-tor )
+	xen? ( collectors-xen )
+	collectors-adaptec_raid? (
 		python
 		sudo
 	)
-	netdata_collectors_am2320? ( python )
-	netdata_collectors_apache? ( python )
-	netdata_collectors_beanstalk? ( python )
-	netdata_collectors_bind_rndc? ( python )
-	netdata_collectors_boinc? ( python )
-	netdata_collectors_ceph? ( python )
-	netdata_collectors_chrony? ( python )
-	netdata_collectors_couchdb? ( python )
-	netdata_collectors_dnsdist? ( python )
-	netdata_collectors_dns_query_time? ( python )
-	netdata_collectors_dockerd? ( python )
-	netdata_collectors_dovecot? ( python )
-	netdata_collectors_elasticsearch? ( python )
-	netdata_collectors_energid? ( python )
-	netdata_collectors_example? ( python )
-	netdata_collectors_exim? ( python )
-	netdata_collectors_fail2ban? ( python )
-	netdata_collectors_freeradius? ( python )
-	netdata_collectors_fronius? ( nodejs )
-	netdata_collectors_gearman? ( python )
-	netdata_collectors_go_expvar? ( python )
-	netdata_collectors_haproxy? ( python )
-	netdata_collectors_hddtemp? ( python )
-	netdata_collectors_hpssa? (
+	collectors-am2320? ( python )
+	collectors-apache? ( python )
+	collectors-beanstalk? ( python )
+	collectors-bind_rndc? ( python )
+	collectors-boinc? ( python )
+	collectors-ceph? ( python )
+	collectors-chrony? ( python )
+	collectors-couchdb? ( python )
+	collectors-dnsdist? ( python )
+	collectors-dns_query_time? ( python )
+	collectors-dockerd? ( python )
+	collectors-dovecot? ( python )
+	collectors-elasticsearch? ( python )
+	collectors-energid? ( python )
+	collectors-example? ( python )
+	collectors-exim? ( python )
+	collectors-fail2ban? ( python )
+	collectors-freeradius? ( python )
+	collectors-fronius? ( nodejs )
+	collectors-gearman? ( python )
+	collectors-go_expvar? ( python )
+	collectors-haproxy? ( python )
+	collectors-hddtemp? ( python )
+	collectors-hpssa? (
 		python
 		sudo
 	)
-	netdata_collectors_httpcheck? ( python )
-	netdata_collectors_icecast? ( python )
-	netdata_collectors_ipfs? ( python )
-	netdata_collectors_isc_dhcpd? ( python )
-	netdata_collectors_litespeed? ( python )
-	netdata_collectors_logind? ( python )
-	netdata_collectors_megacli? (
+	collectors-httpcheck? ( python )
+	collectors-icecast? ( python )
+	collectors-ipfs? ( python )
+	collectors-isc_dhcpd? ( python )
+	collectors-litespeed? ( python )
+	collectors-logind? ( python )
+	collectors-megacli? (
 		python
 		sudo
 	)
-	netdata_collectors_memcached? ( python )
-	netdata_collectors_mongodb? ( python )
-	netdata_collectors_monit? ( python )
-	netdata_collectors_mysql? ( python )
-	netdata_collectors_named? ( nodejs )
-	netdata_collectors_nginx? ( python )
-	netdata_collectors_nginx_plus? ( python )
-	netdata_collectors_nsd? ( python )
-	netdata_collectors_ntpd? ( python )
-	netdata_collectors_nvidia_smi? ( python )
-	netdata_collectors_openldap? ( python )
-	netdata_collectors_oracledb? ( python )
-	netdata_collectors_ovpn_status_log? ( python )
-	netdata_collectors_phpfpm? ( python )
-	netdata_collectors_portcheck? ( python )
-	netdata_collectors_postfix? ( python )
-	netdata_collectors_postgres? ( python )
-	netdata_collectors_powerdns? ( python )
-	netdata_collectors_proxysql? ( python )
-	netdata_collectors_puppet? ( python )
-	netdata_collectors_rabbitmq? ( python )
-	netdata_collectors_redis? ( python )
-	netdata_collectors_rethinkdbs? ( python )
-	netdata_collectors_retroshare? ( python )
-	netdata_collectors_riakkv? ( python )
-	netdata_collectors_samba? (
+	collectors-memcached? ( python )
+	collectors-mongodb? ( python )
+	collectors-monit? ( python )
+	collectors-mysql? ( python )
+	collectors-named? ( nodejs )
+	collectors-nginx? ( python )
+	collectors-nginx_plus? ( python )
+	collectors-nsd? ( python )
+	collectors-ntpd? ( python )
+	collectors-nvidia_smi? ( python )
+	collectors-openldap? ( python )
+	collectors-oracledb? ( python )
+	collectors-ovpn_status_log? ( python )
+	collectors-phpfpm? ( python )
+	collectors-portcheck? ( python )
+	collectors-postfix? ( python )
+	collectors-postgres? ( python )
+	collectors-powerdns? ( python )
+	collectors-proxysql? ( python )
+	collectors-puppet? ( python )
+	collectors-rabbitmq? ( python )
+	collectors-redis? ( python )
+	collectors-rethinkdbs? ( python )
+	collectors-retroshare? ( python )
+	collectors-riakkv? ( python )
+	collectors-samba? (
 		python
 		sudo
 	)
-	netdata_collectors_sensors? ( python )
-	netdata_collectors_sma_webbox? ( nodejs )
-	netdata_collectors_smartd_log? ( python )
-	netdata_collectors_snmp? ( nodejs )
-	netdata_collectors_spigotmc? ( python )
-	netdata_collectors_springboot? ( python )
-	netdata_collectors_squid? ( python )
-	netdata_collectors_stiebeleltron? ( nodejs )
-	netdata_collectors_tomcat? ( python )
-	netdata_collectors_tor? ( python )
-	netdata_collectors_traefik? ( python )
-	netdata_collectors_unbound? ( python )
-	netdata_collectors_uwsgi? ( python )
-	netdata_collectors_varnish? ( python )
-	netdata_collectors_w1sensor? ( python )
-	netdata_collectors_web_log? ( python )
+	collectors-sensors? ( python )
+	collectors-sma_webbox? ( nodejs )
+	collectors-smartd_log? ( python )
+	collectors-snmp? ( nodejs )
+	collectors-spigotmc? ( python )
+	collectors-springboot? ( python )
+	collectors-squid? ( python )
+	collectors-stiebeleltron? ( nodejs )
+	collectors-tomcat? ( python )
+	collectors-tor? ( python )
+	collectors-traefik? ( python )
+	collectors-unbound? ( python )
+	collectors-uwsgi? ( python )
+	collectors-varnish? ( python )
+	collectors-w1sensor? ( python )
+	collectors-web_log? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	dbengine? ( ssl )"
 
@@ -221,14 +221,14 @@ RDEPEND="
 	sys-apps/util-linux
 	virtual/awk
 	caps? ( sys-libs/libcap )
-	netdata_collectors_cups? ( net-print/cups )
+	collectors-cups? ( net-print/cups )
 	dbengine? (
 		app-arch/lz4
 		dev-libs/judy
 	)
 	compression? ( sys-libs/zlib )
-	netdata_collectors_ipmi? ( sys-libs/freeipmi )
-	netdata_collectors_nfacct? (
+	collectors-ipmi? ( sys-libs/freeipmi )
+	collectors-nfacct? (
 		net-firewall/nfacct
 		net-libs/libmnl
 	)
@@ -236,22 +236,22 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		dev-python/pyyaml[${PYTHON_USEDEP}]
-		netdata_collectors_adaptec_raid? ( sys-block/arcconf )
-		netdata_collectors_beanstalk? ( dev-python/beanstalkc[${PYTHON_USEDEP}] )
-		netdata_collectors_dns_query_time? ( dev-python/dnspython[${PYTHON_USEDEP}] )
-		netdata_collectors_hpssa? ( sys-block/hpssacli )
-		netdata_collectors_isc_dhcpd? ( virtual/python-ipaddress[${PYTHON_USEDEP}] )
-		netdata_collectors_megacli? ( sys-block/megacli )
-		netdata_collectors_mongodb? ( dev-python/pymongo[${PYTHON_USEDEP}] )
-		netdata_collectors_mysql? (
+		collectors-adaptec_raid? ( sys-block/arcconf )
+		collectors-beanstalk? ( dev-python/beanstalkc[${PYTHON_USEDEP}] )
+		collectors-dns_query_time? ( dev-python/dnspython[${PYTHON_USEDEP}] )
+		collectors-hpssa? ( sys-block/hpssacli )
+		collectors-isc_dhcpd? ( virtual/python-ipaddress[${PYTHON_USEDEP}] )
+		collectors-megacli? ( sys-block/megacli )
+		collectors-mongodb? ( dev-python/pymongo[${PYTHON_USEDEP}] )
+		collectors-mysql? (
 			|| (
 				dev-python/mysqlclient[${PYTHON_USEDEP}]
 				dev-python/mysql-python[${PYTHON_USEDEP}]
 			)
 		)
-		netdata_collectors_openldap? ( dev-python/python-ldap[${PYTHON_USEDEP}] )
-		netdata_collectors_postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
-		netdata_collectors_tor? ( net-libs/stem[${PYTHON_USEDEP}] )
+		collectors-openldap? ( dev-python/python-ldap[${PYTHON_USEDEP}] )
+		collectors-postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
+		collectors-tor? ( net-libs/stem[${PYTHON_USEDEP}] )
 	)
 	ssl? (
 		dev-libs/openssl:=
@@ -259,7 +259,7 @@ RDEPEND="
 	sudo? (
 		app-admin/sudo
 	)
-	netdata_collectors_xen? (
+	collectors-xen? (
 		app-emulation/xen-tools
 		dev-libs/yajl
 	)"
@@ -289,10 +289,10 @@ src_configure() {
 		--disable-jsonc \
 		$(use_enable dbengine) \
 		$(use_enable ssl https) \
-		$(use_enable netdata_collectors_cups plugin-cups) \
-		$(use_enable netdata_collectors_nfacct plugin-nfacct) \
-		$(use_enable netdata_collectors_ipmi plugin-freeipmi) \
-		$(use_enable netdata_collectors_xen plugin-xenstat) \
+		$(use_enable collectors-cups plugin-cups) \
+		$(use_enable collectors-nfacct plugin-nfacct) \
+		$(use_enable collectors-ipmi plugin-freeipmi) \
+		$(use_enable collectors-xen plugin-xenstat) \
 		$(use_enable cpu_flags_x86_sse2 x86-sse) \
 		$(use_with compression zlib)
 }
