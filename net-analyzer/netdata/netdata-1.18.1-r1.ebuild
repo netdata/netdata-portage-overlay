@@ -209,7 +209,6 @@ RDEPEND="
 	acct-user/netdata
 	acct-group/netdata
 	app-misc/jq
-	dev-libs/libuv
 	>=app-shells/bash-4:0
 	|| (
 		net-analyzer/openbsd-netcat
@@ -223,6 +222,7 @@ RDEPEND="
 	collectors-cups? ( net-print/cups )
 	dbengine? (
 		app-arch/lz4
+		dev-libs/libuv
 		dev-libs/judy
 	)
 	compression? ( sys-libs/zlib )
