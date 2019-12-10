@@ -26,7 +26,7 @@ COLLECTORS="
 	am2320
 	apache
 	beanstalk
-	bind_rndc
+	bind
 	boinc
 	ceph
 	chrony
@@ -38,7 +38,6 @@ COLLECTORS="
 	dovecot
 	elasticsearch
 	energid
-	example
 	exim
 	fail2ban
 	freeradius
@@ -60,7 +59,6 @@ COLLECTORS="
 	mongodb
 	monit
 	mysql
-	named
 	nfacct
 	nginx
 	nginx_plus
@@ -121,7 +119,12 @@ REQUIRED_USE="
 	collectors-am2320? ( python )
 	collectors-apache? ( python )
 	collectors-beanstalk? ( python )
-	collectors-bind_rndc? ( python )
+	collectors-bind? (
+		|| (
+			python
+			nodejs
+		)
+	)
 	collectors-boinc? ( python )
 	collectors-ceph? ( python )
 	collectors-chrony? ( python )
@@ -132,7 +135,6 @@ REQUIRED_USE="
 	collectors-dovecot? ( python )
 	collectors-elasticsearch? ( python )
 	collectors-energid? ( python )
-	collectors-example? ( python )
 	collectors-exim? ( python )
 	collectors-fail2ban? ( python )
 	collectors-freeradius? ( python )
