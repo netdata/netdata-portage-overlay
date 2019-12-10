@@ -215,8 +215,6 @@ RDEPEND="
 		net-analyzer/openbsd-netcat
 		net-analyzer/netcat
 	)
-	net-analyzer/tcpdump
-	net-analyzer/traceroute
 	net-misc/curl
 	net-misc/wget
 	sys-apps/util-linux
