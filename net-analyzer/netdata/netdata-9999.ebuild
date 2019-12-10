@@ -161,7 +161,6 @@ REQUIRED_USE="
 	collectors-mongodb? ( python )
 	collectors-monit? ( python )
 	collectors-mysql? ( python )
-	collectors-named? ( nodejs )
 	collectors-nginx? ( python )
 	collectors-nginx_plus? ( python )
 	collectors-nsd? ( python )
