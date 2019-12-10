@@ -4,7 +4,7 @@
         <description lang='en'>The official overlay for Netdata on Gentoo</description>
         <homepage>https://github.com/netdata/netdata-portage-overlay</homepage>
         <owner type='person'>
-            <email>ahferroin7@gmail.com</email>
+            <email>austin@netdata.cloud</email>
             <name>Austin S. Hemmelgarn</name>
         </owner>
         <source type='git'>git://github.com/netdata/netdata-portage-overlay</source>
