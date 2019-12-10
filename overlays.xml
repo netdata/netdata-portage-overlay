@@ -1,5 +1,5 @@
 <repositories version='1.0'>
-    <repo quality='unstable' status='unofficial'>
+    <repo quality='experimental' status='unofficial'>
         <name>netdata-portage-overlay</name>
         <description lang='en'>The official overlay for Netdata on Gentoo</description>
         <homepage>https://github.com/netdata/netdata-portage-overlay</homepage>
