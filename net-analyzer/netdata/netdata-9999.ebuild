@@ -6,11 +6,16 @@ PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
 
 inherit autotools fcaps linux-info python-r1 systemd user
 
+NETDATA_MOSQUITTO_VERSION="1.6.8"
+NETDATA_MOSQUITTO_REVISION="3"
+
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/netdata/${PN}.git"
 	inherit git-r3
+	SRC_URI="cloud? ( https://github.com/netdata/mosquitto/archive/v.${NETDATA_MOSQUITTO_VERSION}_Netdata-${NETDATA_MOSQUITTO_REVISION}.tar.gz -> ${PN}-mosquitto-${NETDATA_MOSQUITTO_VERSION}-${NETDATA_MOSQUITTO_REVISION}.tar.gz )"
 else
-	SRC_URI="https://github.com/netdata/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/netdata/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+			cloud? ( https://github.com/netdata/mosquitto/archive/v.${NETDATA_MOSQUITTO_VERSION}_Netdata-${NETDATA_MOSQUITTO_REVISION}.tar.gz -> ${PN}-mosquitto-${NETDATA_MOSQUITTO_VERSION}-${NETDATA_MOSQUITTO_REVISION}.tar.gz )"
 	KEYWORDS="amd64 x86 arm ~arm64 ~mips ~ppc ~ppc64 ~s390 ~sparc"
 fi
 
@@ -19,7 +24,7 @@ HOMEPAGE="https://github.com/netdata/netdata https://my-netdata.io/"
 LICENSE="GPL-3+ MIT BSD"
 SLOT="0"
 
-IUSE="caps +compression cpu_flags_x86_sse2 cups dbengine ipmi mysql nfacct nodejs postgres +python ssl sudo tor xen"
+IUSE="cloud caps +compression cpu_flags_x86_sse2 cups dbengine ipmi mysql nfacct nodejs postgres +python ssl sudo tor xen"
 
 COLLECTORS="
 	adaptec_raid
@@ -202,7 +207,8 @@ REQUIRED_USE="
 	collectors-w1sensor? ( python )
 	collectors-web_log? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )
-	dbengine? ( ssl )"
+	dbengine? ( ssl )
+	cloud? ( ssl )"
 
 # most unconditional dependencies are for plugins.d/charts.d.plugin:
 RDEPEND="
@@ -261,6 +267,9 @@ RDEPEND="
 	collectors-xen? (
 		app-emulation/xen-tools
 		dev-libs/yajl
+	)
+	cloud? (
+		>=net-libs/libwebsockets-3[ssl]
 	)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
@@ -272,12 +281,26 @@ FILECAPS=(
 	'cap_dac_read_search,cap_sys_ptrace+ep' 'usr/libexec/netdata/plugins.d/apps.plugin'
 )
 
+src_unpack() {
+	unpack ${P}.tar.gz
+	if use cloud ; then
+		mkdir -p "${T}/mosquitto" || die
+		tar -xaf "${DISTDIR}/${P}-mosquitto.tar.gz" -C "${T}/mosquitto" || die
+	fi
+}
+
 pkg_setup() {
 	linux-info_pkg_setup
 }
 
 src_prepare() {
 	default
+	if use cloud ; then
+		make -C "${T}/mosquitto/lib" || die
+		mkdir -p "${WORKDIR}/externaldeps/mosquitto"
+		cp "${T}/mosquitto/lib/libmosquitto.a" "${WORKDIR}/externaldeps/mosquitto" || die
+		cp "${T}/mosquitto/lib/mosquitto.h" "${WORKDIR}/externaldeps/mosquitto" || die
+	fi
 	eautoreconf
 }
 
