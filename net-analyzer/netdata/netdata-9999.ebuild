@@ -299,10 +299,14 @@ FILECAPS=(
 )
 
 src_unpack() {
-	unpack ${P}.tar.gz
+	if [[ ${PV} == *9999 ]] ; then
+		git-r3_checkout "${EGIT_REPO_URI}"
+	else
+		unpack ${P}.tar.gz
+	fi
+
 	if use cloud ; then
-		mkdir -p "${T}/mosquitto" || die
-		tar -xaf "${DISTDIR}/${P}-mosquitto.tar.gz" -C "${T}/mosquitto" || die
+		unpack "${DISTDIR}/${PN}-mosquitto-${NETDATA_MOSQUITTO_VERSION}-${NETDATA_MOSQUITTO_REVISION}.tar.gz"
 	fi
 }
 
@@ -313,10 +317,10 @@ pkg_setup() {
 src_prepare() {
 	default
 	if use cloud ; then
-		make -C "${T}/mosquitto/lib" || die
-		mkdir -p "${WORKDIR}/externaldeps/mosquitto"
-		cp "${T}/mosquitto/lib/libmosquitto.a" "${WORKDIR}/externaldeps/mosquitto" || die
-		cp "${T}/mosquitto/lib/mosquitto.h" "${WORKDIR}/externaldeps/mosquitto" || die
+		make -C "${WORKDIR}/mosquitto-v.${NETDATA_MOSQUITTO_VERSION}_Netdata-${NETDATA_MOSQUITTO_REVISION}/lib" || die
+		mkdir -p "${WORKDIR}/${P}/externaldeps/mosquitto"
+		cp "${WORKDIR}/mosquitto-v.${NETDATA_MOSQUITTO_VERSION}_Netdata-${NETDATA_MOSQUITTO_REVISION}/lib/libmosquitto.a" "${WORKDIR}/${P}/externaldeps/mosquitto" || die
+		cp "${WORKDIR}/mosquitto-v.${NETDATA_MOSQUITTO_VERSION}_Netdata-${NETDATA_MOSQUITTO_REVISION}/lib/mosquitto.h" "${WORKDIR}/${P}/externaldeps/mosquitto" || die
 	fi
 	eautoreconf
 }
@@ -348,10 +352,10 @@ src_install() {
 	# Remove unneeded .keep files
 	find "${ED}" -name ".keep" -delete || die
 
-	fowners -Rc ${NETDATA_USER}:${NETDATA_GROUP} /var/log/netdata
 	keepdir /var/log/netdata
-	fowners -Rc ${NETDATA_USER}:${NETDATA_GROUP} /var/lib/netdata
+	fowners -Rc ${NETDATA_USER}:${NETDATA_GROUP} /var/log/netdata
 	keepdir /var/lib/netdata
+	fowners -Rc ${NETDATA_USER}:${NETDATA_GROUP} /var/lib/netdata
 	keepdir /var/lib/netdata/registry
 
 	fowners -Rc root:${NETDATA_GROUP} /usr/share/${PN}
