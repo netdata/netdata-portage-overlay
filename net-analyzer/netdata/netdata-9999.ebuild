@@ -24,7 +24,17 @@ HOMEPAGE="https://github.com/netdata/netdata https://my-netdata.io/"
 LICENSE="GPL-3+ MIT BSD"
 SLOT="0"
 
-IUSE="cloud caps +compression cpu_flags_x86_sse2 cups dbengine ipmi mysql nfacct nodejs postgres +python ssl sudo tor xen"
+IUSE="cloud caps +compression cpu_flags_x86_sse2 cups dbengine ipmi jsonc mysql nfacct nodejs postgres +python ssl sudo tor xen"
+
+BACKENDS="
+	kinesis
+	mongodb
+	prometheus
+"
+
+for backend in ${BACKENDS} ; do
+	IUSE="${IUSE} backends-${backend}"
+done
 
 COLLECTORS="
 	adaptec_raid
@@ -237,6 +247,7 @@ RDEPEND="
 		net-firewall/nfacct
 		net-libs/libmnl
 	)
+	jsonc? ( dev-libs/json-c )
 	nodejs? ( net-libs/nodejs )
 	python? (
 		${PYTHON_DEPS}
@@ -270,6 +281,12 @@ RDEPEND="
 	)
 	cloud? (
 		>=net-libs/libwebsockets-3[ssl]
+	)
+	backends-kinesis? ( dev-libs/aws-sdk-cpp[kinesis] )
+	backends-mongodb? ( dev-libs/mongo-c-driver )
+	backends-prometheus? (
+		dev-libs/protobuf:=
+		app-arch/snappy
 	)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
@@ -309,8 +326,12 @@ src_configure() {
 		--localstatedir="${EPREFIX}"/var \
 		--with-user=${NETDATA_USER} \
 		--disable-jsonc \
+		$(use_enable jsonc) \
 		$(use_enable dbengine) \
 		$(use_enable ssl https) \
+		$(use_enable backends-kinesis backend-kinesis) \
+		$(use_enable backends-mongodb backend-mongodb) \
+		$(use_enable backends-prometheus backend-prometheus-remote-write) \
 		$(use_enable collectors-cups plugin-cups) \
 		$(use_enable collectors-nfacct plugin-nfacct) \
 		$(use_enable collectors-ipmi plugin-freeipmi) \
